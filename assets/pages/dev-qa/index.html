@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer QA Checklist</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>Dev QA Checklist</h1>
+            </div>
+            <div class="header-stats">
+                <div class="stat">
+                    <span class="stat-label">Progress</span>
+                    <span class="stat-value"><span id="completedCount">0</span>/<span id="totalCount">0</span></span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Complete</span>
+                    <span class="stat-value"><span id="percentComplete">0</span>%</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-grid">
+            <!-- Checklist Section -->
+            <main class="checklist-section">
+                <!-- Code Quality -->
+                <section class="checklist-category">
+                    <div class="category-header">
+                        <h2>Code Quality</h2>
+                        <span class="category-progress" id="progress-code"></span>
+                    </div>
+                    <div class="checklist-items" id="code-items">
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="code">
+                            <span>Code follows project style guide</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="code">
+                            <span>No console.log() or debug code left</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="code">
+                            <span>No commented-out code</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="code">
+                            <span>Variable/function names are descriptive</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="code">
+                            <span>Code is DRY (Don't Repeat Yourself)</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="code">
+                            <span>No unused imports/dependencies</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="code">
+                            <span>Error handling implemented</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Testing -->
+                <section class="checklist-category">
+                    <div class="category-header">
+                        <h2>Testing</h2>
+                        <span class="category-progress" id="progress-testing"></span>
+                    </div>
+                    <div class="checklist-items" id="testing-items">
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="testing">
+                            <span>Happy path tested</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="testing">
+                            <span>Error cases tested</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="testing">
+                            <span>Edge cases considered</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="testing">
+                            <span>Unit tests passing</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="testing">
+                            <span>Integration tests passing</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="testing">
+                            <span>No breaking changes to existing features</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Performance -->
+                <section class="checklist-category">
+                    <div class="category-header">
+                        <h2>Performance</h2>
+                        <span class="category-progress" id="progress-performance"></span>
+                    </div>
+                    <div class="checklist-items" id="performance-items">
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="performance">
+                            <span>No memory leaks detected</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="performance">
+                            <span>Runtime performance acceptable</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="performance">
+                            <span>API calls optimized (no N+1 queries)</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="performance">
+                            <span>Unused CSS/JS removed</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="performance">
+                            <span>Images optimized</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="performance">
+                            <span>Bundle size acceptable</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Browser & Compatibility -->
+                <section class="checklist-category">
+                    <div class="category-header">
+                        <h2>Browser & Compatibility</h2>
+                        <span class="category-progress" id="progress-browser"></span>
+                    </div>
+                    <div class="checklist-items" id="browser-items">
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="browser">
+                            <span>Tested on Chrome</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="browser">
+                            <span>Tested on Firefox</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="browser">
+                            <span>Tested on Safari</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="browser">
+                            <span>Tested on Edge</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="browser">
+                            <span>Mobile responsive (tested)</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="browser">
+                            <span>Tablet view verified</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Accessibility -->
+                <section class="checklist-category">
+                    <div class="category-header">
+                        <h2>Accessibility</h2>
+                        <span class="category-progress" id="progress-a11y"></span>
+                    </div>
+                    <div class="checklist-items" id="a11y-items">
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="a11y">
+                            <span>Proper heading hierarchy</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="a11y">
+                            <span>Color contrast adequate</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="a11y">
+                            <span>Alt text on images</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="a11y">
+                            <span>Keyboard navigation works</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="a11y">
+                            <span>ARIA labels where needed</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="a11y">
+                            <span>Focus indicators visible</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Security -->
+                <section class="checklist-category">
+                    <div class="category-header">
+                        <h2>Security</h2>
+                        <span class="category-progress" id="progress-security"></span>
+                    </div>
+                    <div class="checklist-items" id="security-items">
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="security">
+                            <span>Input validation implemented</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="security">
+                            <span>No hardcoded secrets/API keys</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="security">
+                            <span>HTTPS used (if applicable)</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="security">
+                            <span>CSRF protection in place</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="security">
+                            <span>XSS vulnerabilities checked</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="security">
+                            <span>Dependencies up to date</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Documentation -->
+                <section class="checklist-category">
+                    <div class="category-header">
+                        <h2>Documentation</h2>
+                        <span class="category-progress" id="progress-docs"></span>
+                    </div>
+                    <div class="checklist-items" id="docs-items">
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="docs">
+                            <span>Code comments added where needed</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="docs">
+                            <span>README updated</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="docs">
+                            <span>API documentation complete</span>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" class="item-checkbox" data-category="docs">
+                            <span>Inline documentation accurate</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Custom Items -->
+                <section class="checklist-category">
+                    <div class="category-header">
+                        <h2>Custom Items</h2>
+                        <button class="btn-add" id="addItemBtn">+ Add Item</button>
+                    </div>
+                    <div class="checklist-items" id="custom-items"></div>
+                </section>
+
+                <!-- Notes Section -->
+                <section class="checklist-category">
+                    <div class="category-header">
+                        <h2>Notes</h2>
+                    </div>
+                    <textarea id="notesArea" class="notes-textarea" placeholder="Add any notes or observations..."></textarea>
+                </section>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="resetBtn">Reset All</button>
+                    <button class="btn btn-secondary" id="printBtn">🖨️ Print</button>
+                    <button class="btn btn-success" id="exportBtn">💾 Save to File</button>
+                </div>
+            </main>
+
+            <!-- Sidebar Tools -->
+            <aside class="tools-sidebar">
+                <h2>Helpful Tools</h2>
+                
+                <div class="tools-group">
+                    <h3>PDF & Document Tools</h3>
+                    <a href="https://www.ilovepdf.com/compare-pdf" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">📄</span>
+                        <span>Compare PDFs</span>
+                    </a>
+                    <a href="https://www.ilovepdf.com/" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">📄</span>
+                        <span>iLovePDF (All Tools)</span>
+                    </a>
+                </div>
+
+                <div class="tools-group">
+                    <h3>Browser DevTools</h3>
+                    <a href="https://chromedevtools.io/" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">⚙️</span>
+                        <span>Chrome DevTools Docs</span>
+                    </a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Tools" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">🦊</span>
+                        <span>Firefox DevTools</span>
+                    </a>
+                </div>
+
+                <div class="tools-group">
+                    <h3>Performance Testing</h3>
+                    <a href="https://pagespeed.web.dev/" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">⚡</span>
+                        <span>Google PageSpeed Insights</span>
+                    </a>
+                    <a href="https://www.webpagetest.org/" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">⏱️</span>
+                        <span>WebPageTest</span>
+                    </a>
+                    <a href="https://bundlephobia.com/" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">📦</span>
+                        <span>Bundle Phobia</span>
+                    </a>
+                </div>
+
+                <div class="tools-group">
+                    <h3>Accessibility</h3>
+                    <a href="https://www.tpgi.com/color-contrast-checker/" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">🎨</span>
+                        <span>Contrast Checker</span>
+                    </a>
+                    <a href="https://wave.webaim.org/" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">♿</span>
+                        <span>WAVE Accessibility</span>
+                    </a>
+                    <a href="https://www.lighthouse-metrics.com/" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">💡</span>
+                        <span>Lighthouse Report</span>
+                    </a>
+                </div>
+
+                <div class="tools-group">
+                    <h3>Visual Regression</h3>
+                    <a href="https://www.browserstack.com/" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">🌐</span>
+                        <span>BrowserStack</span>
+                    </a>
+                    <a href="https://percy.io/" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">📸</span>
+                        <span>Percy.io</span>
+                    </a>
+                </div>
+
+                <div class="tools-group">
+                    <h3>Security</h3>
+                    <a href="https://www.owasp.org/index.php/Main_Page" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">🔒</span>
+                        <span>OWASP</span>
+                    </a>
+                    <a href="https://snyk.io/" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">🛡️</span>
+                        <span>Snyk - Dependency Check</span>
+                    </a>
+                </div>
+
+                <div class="tools-group">
+                    <h3>Code Quality</h3>
+                    <a href="https://www.sonarqube.org/" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">📊</span>
+                        <span>SonarQube</span>
+                    </a>
+                    <a href="https://eslint.org/" target="_blank" rel="noopener noreferrer" class="tool-link">
+                        <span class="tool-icon">✏️</span>
+                        <span>ESLint</span>
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Add Custom Item Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Custom Item</h2>
+            <input type="text" id="customItemInput" placeholder="Enter custom checklist item...">
+            <div class="modal-buttons">
+                <button class="btn btn-primary" id="confirmAddBtn">Add</button>
+                <button class="btn btn-secondary" id="cancelAddBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <a href="../../../index.html">
+      <div class="back-button">
+        <p>Back</p>
+      </div>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GitHub PR GUI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1>GitHub Pull Request GUI</h1>
+      <form id="pr-form">
+        <label>Personal Access Token (repo scope)
+          <input id="token" type="password" placeholder="ghp_..." required>
+        </label>
+        <div class="row">
+          <label>Owner
+            <input id="owner" placeholder="owner or org" required>
+          </label>
+          <label>Repo
+            <input id="repo" placeholder="repository" required>
+          </label>
+        </div>
+        <div class="row">
+          <label>Base branch
+            <input id="base-branch" placeholder="main" value="main" required>
+          </label>
+          <label>New branch (optional)
+            <input id="new-branch" placeholder="leave blank to auto-generate">
+          </label>
+        </div>
+        <label>File path (e.g. src/file.txt)
+          <input id="file-path" placeholder="path/to/file.txt" required>
+        </label>
+
+        <label>File content
+          <textarea id="file-content" rows="8" placeholder="Write or paste file contents here..." required></textarea>
+        </label>
+
+        <label>Commit message
+          <input id="commit-message" placeholder="Add new file via GUI" value="Add file via GUI">
+        </label>
+
+        <label>PR title
+          <input id="pr-title" placeholder="Pull request title" value="Update from GUI">
+        </label>
+
+        <label>PR body (optional)
+          <textarea id="pr-body" rows="4" placeholder="Describe the change"></textarea>
+        </label>
+
+        <div class="actions">
+          <button id="create-pr" type="submit">Create PR</button>
+          <a class="link" href="help.html">Help</a>
+        </div>
+      </form>
+
+      <div id="log" class="log" aria-live="polite"></div>
+    </section>
+  </main>
+  <!-- Back Button -->
+  <a href="../../../index.html">
+    <div class="back-button">
+      <p>Back</p>
+    </div>
+  </a>
+
+  <script src="app.js"></script>
+</body>
+</html>

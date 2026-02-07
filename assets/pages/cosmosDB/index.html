@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmos Database JSON Generator</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="mmit-application-styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Configuration JSON Generator</h1>
+        <p class="subtitle">Generate JSON configuration documents with templates, channels, and feature flags</p>
+
+        <form id="cosmosForm">
+            <!-- CLIENT INFORMATION SECTION -->
+            <div class="form-section">
+                <h3>Client Configuration</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="slug">Client Name / Slug *</label>
+                        <input 
+                            type="text" 
+                            id="slug" 
+                            name="slug"
+                            placeholder="e.g., Archbrook Pharmaceuticals"
+                            required
+                        >
+                        <div class="validation-error" id="slugError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clientId">Client ID *</label>
+                        <input 
+                            type="number" 
+                            id="clientId" 
+                            name="clientId"
+                            placeholder="e.g., *****"
+                            required
+                        >
+                        <div class="validation-error" id="clientIdError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apiUrl">API URL *</label>
+                        <input 
+                            type="url" 
+                            id="apiUrl" 
+                            name="apiUrl"
+                            placeholder="e.g., https://api.example.com/test"
+                            required
+                        >
+                        <div class="validation-error" id="apiUrlError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mmitCdnUrl">CDN URL</label>
+                        <input 
+                            type="url" 
+                            id="mmitCdnUrl" 
+                            name="mmitCdnUrl"
+                            placeholder="e.g., https://assets.example.com"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mmitApiUrl">API URL</label>
+                        <input 
+                            type="url" 
+                            id="mmitApiUrl" 
+                            name="mmitApiUrl"
+                            placeholder="e.g., https://api.example.com"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="templateContainer">Template Container</label>
+                        <input 
+                            type="text" 
+                            id="templateContainer" 
+                            name="templateContainer"
+                            placeholder="e.g., templates2"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="vaultId">Veeva Vault ID</label>
+                        <input 
+                            type="url" 
+                            id="vaultId" 
+                            name="vaultId"
+                            placeholder="e.g., https://vault.veevavault.com"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="veevaExternalId">Veeva External ID</label>
+                        <input 
+                            type="text" 
+                            id="veevaExternalId" 
+                            name="veevaExternalId"
+                            placeholder="e.g., vault__244__1.0"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="debug" name="debug">
+                            Debug Mode Enabled
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FEATURE FLAGS SECTION -->
+            <div class="form-section">
+                <h3>Feature Flags</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="showPrint" name="showPrint" checked>
+                            Show Print Button
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="showVerification" name="showVerification" checked>
+                            Show Verification Request
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="showApprovedEmail" name="showApprovedEmail">
+                            Show Approved Email
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="showRevise" name="showRevise" checked>
+                            Show Revise Button
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="enablePrecall" name="enablePrecall" checked>
+                            Enable Precall Mode
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="notificationEnabled" name="notificationEnabled">
+                            Notifications Enabled
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHANNELS SECTION -->
+            <div class="form-section">
+                <h3>Channels</h3>
+                <div id="channelsContainer" class="dynamic-list">
+                    <div class="dynamic-item">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Channel Name *</label>
+                                <input type="text" class="channel-name" placeholder="e.g., Commercial" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Display Name *</label>
+                                <input type="text" class="channel-display" placeholder="e.g., Commercial" required>
+                            </div>
+                            <div class="form-group" style="display: flex; align-items: flex-end;">
+                                <button type="button" class="btn-remove" onclick="removeChannel(this)">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn-add" onclick="addChannel()">+ Add Channel</button>
+            </div>
+
+            <!-- INDICATIONS SECTION -->
+            <div class="form-section">
+                <h3>Indications</h3>
+                <div id="indicationsContainer" class="dynamic-list">
+                    <div class="dynamic-item">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Indication ID *</label>
+                                <input type="number" class="indication-id" placeholder="e.g., ***" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Indication Name *</label>
+                                <input type="text" class="indication-name" placeholder="e.g., Pharma Plus Hub (P+H)" required>
+                            </div>
+                            <div class="form-group" style="display: flex; align-items: flex-end;">
+                                <button type="button" class="btn-remove" onclick="removeIndication(this)">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn-add" onclick="addIndication()">+ Add Indication</button>
+            </div>
+
+            <!-- TEMPLATES SECTION -->
+            <div class="form-section">
+                <h3>Templates</h3>
+                <div id="templatesContainer" class="dynamic-list">
+                    <div class="dynamic-item template-item">
+                        <details open>
+                            <summary class="template-summary">Template 1</summary>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Template Name *</label>
+                                    <input type="text" class="template-name" placeholder="e.g., Wellness Works Formulary" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Waypath Name</label>
+                                    <input type="text" class="template-waypath" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Template File Name *</label>
+                                    <input type="text" class="template-filename" placeholder="e.g., Wellness/Wellness Works Formulary.html" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Template Email File Name</label>
+                                    <input type="text" class="template-email-filename" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Document ID</label>
+                                    <input type="text" class="template-document-id" placeholder="e.g., ***">
+                                </div>
+                                <div class="form-group">
+                                    <label>Template Type *</label>
+                                    <input type="text" class="template-type" placeholder="HCP" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Template Product ID *</label>
+                                    <input type="number" class="template-product-id" placeholder="e.g., ******" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Template ID *</label>
+                                    <input type="number" class="template-id" placeholder="e.g., *****" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Project ID *</label>
+                                    <input type="number" class="template-project-id" placeholder="e.g., ****" required>
+                                </div>
+                                <div class="form-group full">
+                                    <label>Channels (comma-separated) *</label>
+                                    <input type="text" class="template-channels" placeholder="e.g., Commercial, Medicare, Medicaid, Health Exchange" required>
+                                </div>
+                                <div class="form-group full">
+                                    <label>Indication IDs (comma-separated)</label>
+                                    <input type="text" class="template-indications" placeholder="e.g., ***, ***, ***">
+                                </div>
+                                <div class="form-group full" style="display: flex; align-items: flex-end;">
+                                    <button type="button" class="btn-remove" onclick="removeTemplate(this)">Remove Template</button>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <button type="button" class="btn-add" onclick="addTemplate()">+ Add Template</button>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-generate" onclick="generateJSON()">Generate JSON</button>
+                <button type="button" class="btn-copy" onclick="copyJSON()">Copy JSON</button>
+                <button type="button" class="btn-download" onclick="downloadJSON()">Download JSON</button>
+                <button type="button" class="btn-clear" onclick="clearForm()">Clear</button>
+                <!-- <button type="button" class="btn-sample" onclick="loadSampleData()" style="background: #2196F3;">Load Sample</button> -->
+            </div>
+        </form>
+
+        <div class="output-section" id="outputSection" style="display: none;">
+            <h2>Generated JSON</h2>
+            <div class="output-container">
+                <div class="copy-feedback" id="copyFeedback">Copied to clipboard!</div>
+                <pre class="json-output" id="jsonOutput"></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <a href="../../../index.html">
+      <div class="back-button">
+        <p>Back</p>
+      </div>
+    </a>
+
+    <script>
+        const form = document.getElementById('cosmosForm');
+        let generatedJSON = null;
+
+        // Initialize with sample data
+        function initializeSampleData() {
+            document.getElementById('slug').value = '';
+            document.getElementById('clientId').value = '';
+            document.getElementById('apiUrl').value = '';
+            document.getElementById('mmitCdnUrl').value = '';
+            document.getElementById('mmitApiUrl').value = '';
+            document.getElementById('templateContainer').value = '';
+            document.getElementById('vaultId').value = '';
+            document.getElementById('veevaExternalId').value = '';
+        }
+
+        function loadSampleData() {
+            clearForm();
+            
+            // Client configuration
+            document.getElementById('slug').value = '';
+            document.getElementById('clientId').value = '';
+            document.getElementById('apiUrl').value = '';
+            document.getElementById('mmitCdnUrl').value = '';
+            document.getElementById('mmitApiUrl').value = '';
+            document.getElementById('templateContainer').value = '';
+            document.getElementById('vaultId').value = '';
+            document.getElementById('veevaExternalId').value = '';
+            document.getElementById('debug').checked = true;
+
+            // Feature flags
+            document.getElementById('showPrint').checked = true;
+            document.getElementById('showVerification').checked = true;
+            document.getElementById('showApprovedEmail').checked = false;
+            document.getElementById('showRevise').checked = true;
+            document.getElementById('enablePrecall').checked = true;
+            document.getElementById('notificationEnabled').checked = false;
+
+            // Populate channels - fill the first empty one, then add more
+            const channelsData = [
+                { name: 'Commercial', display: 'Commercial' },
+                { name: 'Medicare', display: 'Medicare' },
+                { name: 'Medicaid', display: 'Medicaid' },
+                { name: 'Health Exchange', display: 'HIX' }
+            ];
+
+            let channelContainer = document.getElementById('channelsContainer');
+            const firstChannel = channelContainer.querySelector('.dynamic-item');
+            firstChannel.querySelector('.channel-name').value = channelsData[0].name;
+            firstChannel.querySelector('.channel-display').value = channelsData[0].display;
+            
+            for (let i = 1; i < channelsData.length; i++) {
+                addChannel();
+                const items = channelContainer.querySelectorAll('.dynamic-item');
+                items[i].querySelector('.channel-name').value = channelsData[i].name;
+                items[i].querySelector('.channel-display').value = channelsData[i].display;
+            }
+
+            // Populate indications
+            const indicationsData = [
+                { id: '675', name: 'Familial Chylomicronemia Syndrome (FCS)' }
+            ];
+
+            let indicationContainer = document.getElementById('indicationsContainer');
+            const firstIndication = indicationContainer.querySelector('.dynamic-item');
+            firstIndication.querySelector('.indication-id').value = indicationsData[0].id;
+            firstIndication.querySelector('.indication-name').value = indicationsData[0].name;
+            
+            for (let i = 1; i < indicationsData.length; i++) {
+                addIndication();
+                const items = indicationContainer.querySelectorAll('.dynamic-item');
+                items[i].querySelector('.indication-id').value = indicationsData[i].id;
+                items[i].querySelector('.indication-name').value = indicationsData[i].name;
+            }
+
+            // Populate templates
+            const templatesData = [{
+                name: '',
+                waypath: '',
+                filename: '',
+                emailFilename: '',
+                documentId: '',
+                type: '',
+                productId: '',
+                templateId: '',
+                projectId: '',
+                channels: '',
+                indications: ''
+            }];
+
+            let templateContainer = document.getElementById('templatesContainer');
+            const firstTemplate = templateContainer.querySelector('.template-item');
+            
+            const item = firstTemplate;
+            item.querySelector('.template-name').value = templatesData[0].name;
+            item.querySelector('.template-waypath').value = templatesData[0].waypath;
+            item.querySelector('.template-filename').value = templatesData[0].filename;
+            item.querySelector('.template-email-filename').value = templatesData[0].emailFilename;
+            item.querySelector('.template-document-id').value = templatesData[0].documentId;
+            item.querySelector('.template-type').value = templatesData[0].type;
+            item.querySelector('.template-product-id').value = templatesData[0].productId;
+            item.querySelector('.template-id').value = templatesData[0].templateId;
+            item.querySelector('.template-project-id').value = templatesData[0].projectId;
+            item.querySelector('.template-channels').value = templatesData[0].channels;
+            item.querySelector('.template-indications').value = templatesData[0].indications;
+            
+            updateTemplateSummaries();
+        }
+
+        function generateJSON() {
+            clearErrors();
+
+            // Get client data
+            const slug = document.getElementById('slug').value.trim();
+            const clientId = document.getElementById('clientId').value.trim();
+
+            if (!slug || !clientId) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // Collect channels
+            const channels = [];
+            document.querySelectorAll('#channelsContainer .dynamic-item').forEach(item => {
+                const name = item.querySelector('.channel-name').value.trim();
+                const display = item.querySelector('.channel-display').value.trim();
+                if (name && display) {
+                    channels.push({
+                        ChannelName: name,
+                        DisplayName: display
+                    });
+                }
+            });
+
+            // Collect indications
+            const indications = [];
+            document.querySelectorAll('#indicationsContainer .dynamic-item').forEach(item => {
+                const id = item.querySelector('.indication-id').value.trim();
+                const name = item.querySelector('.indication-name').value.trim();
+                if (id && name) {
+                    indications.push({
+                        IndicationId: parseInt(id),
+                        Name: name
+                    });
+                }
+            });
+
+            // Collect templates
+            const templates = [];
+            document.querySelectorAll('#templatesContainer .template-item').forEach((item, index) => {
+                const name = item.querySelector('.template-name').value.trim();
+                const filename = item.querySelector('.template-filename').value.trim();
+                const productId = item.querySelector('.template-product-id').value.trim();
+                const templateId = item.querySelector('.template-id').value.trim();
+                const projectId = item.querySelector('.template-project-id').value.trim();
+                const channels = item.querySelector('.template-channels').value.trim().split(',').map(c => c.trim());
+
+                if (name && filename && productId && templateId && projectId) {
+                    const template = {
+                        ClientId: parseInt(clientId),
+                        waypathName: item.querySelector('.template-waypath').value.trim() || name,
+                        TemplateName: name,
+                        TemplateFileName: filename,
+                        TemplateEmailFileName: item.querySelector('.template-email-filename').value.trim() || `${filename.replace('.html', '')}-email.html`,
+                        FileName: filename,
+                        documentId: item.querySelector('.template-document-id').value.trim() || '244',
+                        TemplateType: item.querySelector('.template-type').value.trim() || name,
+                        TemplateProductId: parseInt(productId),
+                        TemplateId: parseInt(templateId),
+                        ProjectId: parseInt(projectId),
+                        IndicationIds: item.querySelector('.template-indications').value.trim() 
+                            ? item.querySelector('.template-indications').value.trim().split(',').map(i => parseInt(i.trim()))
+                            : [],
+                        Channels: channels
+                    };
+                    templates.push(template);
+                }
+            });
+
+            // Create configuration document
+            const configDocument = {
+                slug: slug,
+                schemaVersion: 2,
+                clientId: parseInt(clientId),
+                id: clientId,
+                debug: document.getElementById('debug').checked,
+                apiUrl: document.getElementById('apiUrl').value.trim(),
+                mmitCdnUrl: document.getElementById('mmitCdnUrl').value.trim(),
+                mmitApiUrl: document.getElementById('mmitApiUrl').value.trim(),
+                TemplateContainer: document.getElementById('templateContainer').value.trim() || 'templates2',
+                veevaSettings: {
+                    vaultId: document.getElementById('vaultId').value.trim(),
+                    veevaExternalId: document.getElementById('veevaExternalId').value.trim()
+                },
+                debugSettings: {
+                    Enabled: document.getElementById('debug').checked
+                },
+                featureFlags: {
+                    ShowPrintButton: document.getElementById('showPrint').checked,
+                    ShowVerificationRequest: document.getElementById('showVerification').checked,
+                    ShowApprovedEmail: document.getElementById('showApprovedEmail').checked,
+                    ShowReviseButton: document.getElementById('showRevise').checked,
+                    Version: "2.0",
+                    EnablePrecallMode: document.getElementById('enablePrecall').checked,
+                    ShowIvaAccessOverview: false,
+                    ShowIvaStrategizer: false,
+                    ShowIvaStatements: false,
+                    ShowIvaIsi: false,
+                    ShowIvaEmail: false,
+                    NotificationsEnabled: document.getElementById('notificationEnabled').checked
+                },
+                templates: templates,
+                channels: channels,
+                Indications: indications
+            };
+
+            generatedJSON = configDocument;
+            const jsonString = JSON.stringify(configDocument, null, 2);
+
+            document.getElementById('jsonOutput').textContent = jsonString;
+            document.getElementById('outputSection').style.display = 'block';
+            document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyJSON() {
+            if (!generatedJSON) {
+                alert('Please generate JSON first');
+                return;
+            }
+
+            const jsonString = JSON.stringify(generatedJSON, null, 2);
+            navigator.clipboard.writeText(jsonString).then(() => {
+                showCopyFeedback();
+            }).catch(err => {
+                alert('Failed to copy: ' + err);
+            });
+        }
+
+        function downloadJSON() {
+            if (!generatedJSON) {
+                alert('Please generate JSON first');
+                return;
+            }
+
+            const jsonString = JSON.stringify(generatedJSON, null, 2);
+            const fileName = `${generatedJSON.slug.replace(/\s+/g, '_')}-${generatedJSON.clientId}.json`;
+            
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(jsonString));
+            element.setAttribute('download', fileName);
+            element.style.display = 'none';
+            
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        function clearForm() {
+            form.reset();
+            generatedJSON = null;
+            document.getElementById('outputSection').style.display = 'none';
+            clearErrors();
+        }
+
+        function clearErrors() {
+            const errorElements = document.querySelectorAll('.validation-error');
+            errorElements.forEach(el => el.textContent = '');
+        }
+
+        function showCopyFeedback() {
+            const feedback = document.getElementById('copyFeedback');
+            feedback.classList.add('show');
+            setTimeout(() => {
+                feedback.classList.remove('show');
+            }, 2000);
+        }
+
+        function addChannel() {
+            const container = document.getElementById('channelsContainer');
+            const template = container.querySelector('.dynamic-item').cloneNode(true);
+            template.querySelectorAll('input').forEach(input => input.value = '');
+            container.appendChild(template);
+        }
+
+        function removeChannel(button) {
+            const container = document.getElementById('channelsContainer');
+            if (container.querySelectorAll('.dynamic-item').length > 1) {
+                button.closest('.dynamic-item').remove();
+            } else {
+                alert('At least one channel is required');
+            }
+        }
+
+        function addIndication() {
+            const container = document.getElementById('indicationsContainer');
+            const template = container.querySelector('.dynamic-item').cloneNode(true);
+            template.querySelectorAll('input').forEach(input => input.value = '');
+            container.appendChild(template);
+        }
+
+        function removeIndication(button) {
+            const container = document.getElementById('indicationsContainer');
+            if (container.querySelectorAll('.dynamic-item').length > 1) {
+                button.closest('.dynamic-item').remove();
+            } else {
+                alert('At least one indication is required');
+            }
+        }
+
+        function addTemplate() {
+            const container = document.getElementById('templatesContainer');
+            const items = container.querySelectorAll('.template-item');
+            const newIndex = items.length + 1;
+            const template = container.querySelector('.template-item').cloneNode(true);
+            template.querySelectorAll('input').forEach(input => input.value = '');
+            template.querySelector('summary').textContent = `Template ${newIndex}`;
+            template.querySelector('details').setAttribute('open', '');
+            container.appendChild(template);
+        }
+
+        function removeTemplate(button) {
+            const container = document.getElementById('templatesContainer');
+            if (container.querySelectorAll('.template-item').length > 1) {
+                button.closest('.template-item').remove();
+                updateTemplateSummaries();
+            } else {
+                alert('At least one template is required');
+            }
+        }
+
+        function updateTemplateSummaries() {
+            document.querySelectorAll('#templatesContainer .template-item').forEach((item, index) => {
+                item.querySelector('summary').textContent = `Template ${index + 1}`;
+            });
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            // Can be called to populate with sample data
+            // initializeSampleData();
+        });
+    </script>
+</body>
+</html>

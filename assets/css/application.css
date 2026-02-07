@@ -1,0 +1,809 @@
+/* ============================================
+   Application-Specific Styles
+   Template Builder UI
+   Extends MMIT StyleGuide
+   ============================================ */
+
+/* Override MMIT defaults for application layout */
+
+:root {
+  /* Application-specific overrides */
+  --app-bg: #f8fafc;
+  --app-bg-card: #ffffff;
+  --app-bg-muted: #f1f5f9;
+  --app-border: #e2e8f0;
+  --app-text: #0f172a;
+  --app-text-muted: #64748b;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--app-bg);
+}
+
+/* ============================================
+   Header Overrides
+   ============================================ */
+
+header {
+  height: 64px;
+  background: var(--app-bg-card);
+  border-bottom: 1px solid var(--app-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+header nav {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+header .logo {
+  width: 36px;
+  height: 36px;
+  background: var(--mmit-black);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mmit-white);
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+}
+
+.header-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-title {
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--spacing-lg);
+}
+
+.header-title h1 {
+  font-size: 18px;
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+}
+
+.template-name {
+  font-size: 12px;
+  color: var(--app-text-muted);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.header-features a {
+  font-size: 13px;
+  color: var(--app-text-muted);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  margin-right: 10px;
+}
+
+.header-features a:hover {
+  background: var(--app-bg-muted);
+  border-color: var(--mmit-black);
+  color: var(--mmit-black);
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background: var(--app-border);
+  margin: 0 4px;
+}
+
+/* ============================================
+   Button Overrides for Application
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  color: var(--app-text-muted);
+}
+
+.btn-icon:hover:not(:disabled) {
+  background: var(--app-bg-muted);
+  color: var(--app-text);
+}
+
+.btn-danger {
+  background: transparent;
+  color: #ef4444;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* ============================================
+   Main Layout
+   ============================================ */
+
+.main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ============================================
+   Sidebars
+   ============================================ */
+
+.sidebar-left,
+.sidebar-right {
+  width: 280px;
+  background: var(--app-bg-card);
+  border-right: 1px solid var(--app-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.sidebar-right {
+  border-right: none;
+  border-left: 1px solid var(--app-border);
+  width: 320px;
+}
+
+.panel-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--app-border);
+}
+
+.panel-header h2 {
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 4px;
+}
+
+.panel-header p {
+  font-size: 13px;
+  color: var(--app-text-muted);
+}
+
+/* ============================================
+   Component List
+   ============================================ */
+
+.component-list {
+  padding: 12px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.component-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--app-bg-muted);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 8px;
+  cursor: grab;
+  transition: all var(--transition-fast);
+}
+
+.component-item:hover {
+  border-color: var(--mmit-black);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.component-item:active {
+  cursor: grabbing;
+}
+
+.component-item.dragging {
+  opacity: 0.5;
+}
+
+.component-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--app-bg-card);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mmit-black);
+  flex-shrink: 0;
+}
+
+.component-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.component-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.component-desc {
+  font-size: 12px;
+  color: var(--app-text-muted);
+}
+
+/* ============================================
+   Canvas Area
+   ============================================ */
+
+.canvas-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--app-bg);
+  overflow: hidden;
+}
+
+.canvas-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px;
+}
+
+.canvas-container {
+  max-width: 870px;
+  margin: 0 auto;
+}
+
+.email-preview {
+  background: var(--app-bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  min-height: 400px;
+  position: relative;
+  transition: background-color var(--transition-base);
+}
+
+.email-preview.dark-mode {
+  background: #1a1a1a;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  color: var(--app-text-muted);
+  text-align: center;
+}
+
+.empty-state svg {
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.empty-state p {
+  font-size: 14px;
+}
+
+.email-preview.drag-over {
+  outline: 2px dashed var(--mmit-black);
+  outline-offset: -2px;
+}
+
+/* ============================================
+   Canvas Components
+   ============================================ */
+
+.canvas-component {
+  position: relative;
+  border: 2px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.canvas-component:hover {
+  border-color: var(--app-border);
+}
+
+.canvas-component.selected {
+  border-color: var(--mmit-black);
+}
+
+.canvas-component .component-actions {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.canvas-component:hover .component-actions,
+.canvas-component.selected .component-actions {
+  opacity: 1;
+}
+
+.canvas-component .component-actions button {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  border: none;
+  background: var(--app-bg-card);
+  color: var(--app-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.canvas-component .component-actions button:hover {
+  background: var(--app-bg-muted);
+  color: var(--app-text);
+}
+
+.canvas-component .component-actions button.delete:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.canvas-component .drag-handle {
+  cursor: grab;
+}
+
+.canvas-component .drag-handle:active {
+  cursor: grabbing;
+}
+
+/* ============================================
+   Property Editor
+   ============================================ */
+
+.property-content {
+  padding: 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.empty-property-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: var(--app-text-muted);
+  text-align: center;
+}
+
+.empty-property-state svg {
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.empty-property-state p {
+  font-size: 13px;
+}
+
+.property-group {
+  margin-bottom: 20px;
+}
+
+.property-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--app-text);
+}
+
+/* ============================================
+   Form Controls
+   ============================================ */
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  background: var(--app-bg-card);
+  color: var(--app-text);
+  transition: border-color var(--transition-fast);
+  font-family: var(--font-primary);
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--mmit-yellow);
+  box-shadow: 0 0 0 3px rgba(244, 196, 48, 0.2);
+}
+
+.textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.color-input-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.color-input-wrapper input[type="color"] {
+  width: 40px;
+  height: 36px;
+  padding: 2px;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.color-input-wrapper input[type="text"] {
+  flex: 1;
+}
+
+.range-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.range-wrapper input[type="range"] {
+  flex: 1;
+  height: 6px;
+  -webkit-appearance: none;
+  background: var(--app-bg-muted);
+  border-radius: 3px;
+}
+
+.range-wrapper input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--mmit-black);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.range-wrapper span {
+  min-width: 40px;
+  text-align: right;
+  font-size: 13px;
+  color: var(--app-text-muted);
+}
+
+/* ============================================
+   Modals
+   ============================================ */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal {
+  background: var(--app-bg-card);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-sm {
+  max-width: 400px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--app-border);
+}
+
+.modal-header h3 {
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.modal-close {
+  color: var(--app-text-muted);
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-desc {
+  font-size: 14px;
+  color: var(--app-text-muted);
+  margin-bottom: 16px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--app-border);
+}
+
+.code-preview {
+  background: #1e293b;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  overflow: auto;
+  max-height: 300px;
+}
+
+.code-preview pre {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 12px;
+  color: #e2e8f0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* ============================================
+   Template List
+   ============================================ */
+
+.template-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.template-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.template-item:hover {
+  border-color: var(--mmit-black);
+  background: var(--app-bg-muted);
+}
+
+.template-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.template-item-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.template-item-count {
+  font-size: 12px;
+  color: var(--app-text-muted);
+}
+
+.empty-templates {
+  text-align: center;
+  color: var(--app-text-muted);
+  padding: 40px;
+}
+
+/* ============================================
+   Toasts & Notifications
+   ============================================ */
+
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toast {
+  background: var(--app-bg-card);
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 300px;
+  animation: slideIn 0.2s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toast-success {
+  border-left: 3px solid #4CAF50;
+}
+
+.toast-error {
+  border-left: 3px solid #F44336;
+}
+
+.toast-content {
+  flex: 1;
+}
+
+.toast-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.toast-message {
+  font-size: 13px;
+  color: var(--app-text-muted);
+}
+
+/* ============================================
+   Social Toggle
+   ============================================ */
+
+.social-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.social-toggle label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--app-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 13px;
+  transition: all var(--transition-fast);
+}
+
+.social-toggle label:has(input:checked) {
+  background: var(--mmit-black);
+  border-color: var(--mmit-black);
+  color: var(--mmit-white);
+}
+
+.social-toggle input {
+  display: none;
+}
+
+.email-preview .dark-mode-content {
+  color: #ffffff;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+  .sidebar-left,
+  .sidebar-right {
+    width: 240px;
+  }
+
+  .sidebar-right {
+    width: 240px;
+  }
+
+  .canvas-scroll {
+    padding: 16px;
+  }
+
+  .modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .header-title {
+    margin-left: var(--spacing-md);
+  }
+
+  .header-title h1 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-left,
+  .sidebar-right,
+  .main {
+    flex-direction: column;
+  }
+
+  .sidebar-left,
+  .sidebar-right {
+    width: 100%;
+    height: 200px;
+    border-right: none;
+    border-bottom: 1px solid var(--app-border);
+  }
+
+  .modal {
+    width: 98%;
+    max-height: 95vh;
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+}

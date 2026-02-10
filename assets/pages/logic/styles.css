@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+  font-family: Segoe UI, Roboto, Arial
+}
+
+body {
+  margin: 0;
+  background: #f6f8fb;
+  color: #111
+}
+
+header {
+  background: #1f6feb;
+  color: #fff;
+  padding: 18px 20px
+}
+
+header h1 {
+  margin: 0;
+  font-size: 20px
+}
+
+header .muted {
+  opacity: .9;
+  margin-top: 6px
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 12px;
+  padding: 18px
+}
+
+.sidebar {
+  background: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08)
+}
+
+.editor {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px
+}
+
+.pane {
+  background: #fff;
+  padding: 8px;
+  border-radius: 6px
+}
+
+.pane label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px
+}
+
+textarea {
+  width: 100%;
+  height: 300px;
+  resize: vertical;
+  padding: 10px;
+  font-family: Consolas, monospace;
+  font-size: 13px;
+  border: 1px solid #e6eef8;
+  border-radius: 4px;
+  background: #fbfdff
+}
+
+.preview {
+  background: #fff;
+  padding: 12px;
+  border-radius: 6px
+}
+
+/* make the console/preview span the full width of the container */
+.preview {
+  grid-column: 1 / -1;
+}
+
+.hidden{display:none !important}
+
+.output {
+  min-height: 200px;
+  padding: 10px;
+  border: 1px dashed #e2ecff;
+  background: #fcfeff;
+  border-radius: 4px
+}
+
+.console {
+  background: #0b1220;
+  color: #9ae6ff;
+  padding: 10px;
+  border-radius: 4px;
+  min-height: 80px;
+  overflow: auto
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px
+}
+
+button {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(2, 6, 23, 0.08);
+  cursor: pointer;
+  background: #fff
+}
+
+button.primary {
+  background: #1f6feb;
+  color: #fff;
+  border-color: #1f6feb
+}
+
+ul {
+  padding-left: 14px
+}
+
+.helper-item {
+  padding: 6px 4px;
+  border-radius: 4px;
+  cursor: pointer
+}
+
+.helper-item:hover {
+  background: #f1f7ff
+}
+
+.doc {
+  font-size: 13px;
+  margin-top: 8px;
+  background: #fbfdff;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #eef6ff
+}
+
+footer {
+  padding: 12px;
+  text-align: center;
+  font-size: 12px;
+  color: #667
+}
+
+.back-button {
+    background-color: var(--mmit-dark-gray);
+    color: var(--mmit-yellow);
+    border: 2px solid var(--mmit-yellow);
+    position: fixed;
+    bottom: 20px; /* Distance from the bottom of the viewport */
+    right: 20px;  /* Distance from the right of the viewport */
+    z-index: 1000; /* Ensures it stays on top of other elements */
+    padding: 10px 20px 0;
+    border-radius: 10px;
+}
+
+@media (max-width:1100px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto
+  }
+}

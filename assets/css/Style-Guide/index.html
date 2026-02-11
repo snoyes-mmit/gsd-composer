@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMIT StyleGuide Demo - Professional Healthcare Solutions</title>
+    <link rel="stylesheet" href="fonts/stylesheet.css">
+    <link rel="stylesheet" href="mmit-styles.css">
+    <style>
+        /* Additional demo-specific styling */
+        .demo-section {
+            scroll-margin-top: 80px;
+        }
+        
+        .code-block {
+            background-color: #f5f5f5;
+            border-left: 4px solid #F4C430;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         HEADER & NAVIGATION
+         ============================================ -->
+    <header>
+        <nav class="container">
+            <div class="logo">MMIT Network</div>
+            <ul>
+                <li><a href="#typography">Typography</a></li>
+                <li><a href="#buttons">Buttons</a></li>
+                <li><a href="#cards">Cards</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#tables">Tables</a></li>
+                <li><a href="#alerts">Alerts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">Welcome to MMIT</div>
+            <h1>Illuminating the Path to Patient Access</h1>
+            <p class="hero-description">
+                Explore our comprehensive CSS StyleGuide featuring modern design patterns, 
+                professional components, and responsive layouts tailored for healthcare solutions.
+            </p>
+            <div class="flex-center gap-lg">
+                <button class="btn btn-primary btn-lg">Explore Guide</button>
+                <button class="btn btn-outline btn-lg">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TYPOGRAPHY SECTION
+         ============================================ -->
+    <section id="typography" class="demo-section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Typography & <span class="section-header-accent">Text Styles</span></h2>
+                <p>Professional typography hierarchy for clear communication</p>
+            </div>
+
+            <div class="grid grid-2">
+                <div>
+                    <h1>Heading 1</h1>
+                    <p class="text-muted">Font size: 2.5rem | Weight: 700</p>
+
+                    <h2>Heading 2</h2>
+                    <p class="text-muted">Font size: 2rem | Weight: 700</p>
+
+                    <h3>Heading 3</h3>
+                    <p class="text-muted">Font size: 1.5rem | Weight: 700</p>
+
+                    <h4>Heading 4</h4>
+                    <p class="text-muted">Font size: 1.125rem | Weight: 700</p>
+                </div>
+
+                <div>
+                    <div class="card">
+                        <div class="card-header">Text Variants</div>
+                        <div class="card-body">
+                            <p><span class="font-bold">Bold Text:</span> Uses font-weight-bold</p>
+                            <p><span class="font-semibold">Semibold Text:</span> Uses font-weight-semibold</p>
+                            <p><span class="font-light">Light Text:</span> Uses font-weight-light</p>
+                            <p><span class="text-yellow">Accent Text:</span> Uses MMIT yellow color</p>
+                            <p><span class="text-muted">Muted Text:</span> Uses muted gray</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="grid grid-3">
+                <div>
+                    <h4>Text Alignment</h4>
+                    <p class="text-left">Left aligned text</p>
+                    <p class="text-center">Center aligned text</p>
+                    <p class="text-right">Right aligned text</p>
+                </div>
+                <div>
+                    <h4>Text Transforms</h4>
+                    <p class="uppercase">Uppercase text</p>
+                    <p class="lowercase">LOWERCASE TEXT</p>
+                    <p class="capitalize">capitalize text</p>
+                </div>
+                <div>
+                    <h4>Color Utilities</h4>
+                    <p class="text-black">Black text</p>
+                    <p class="text-yellow">Yellow text</p>
+                    <p class="text-gold">Gold text</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         BUTTONS SECTION
+         ============================================ -->
+    <section id="buttons" class="demo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Button <span class="section-header-accent">Styles</span></h2>
+                <p>Multiple button variations for different actions and states</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-header">Primary Buttons</div>
+                    <div class="card-body gap-md flex flex-col">
+                        <button class="btn btn-primary">Primary Button</button>
+                        <button class="btn btn-primary btn-lg">Large Button</button>
+                        <button class="btn btn-primary btn-sm">Small Button</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Secondary Buttons</div>
+                    <div class="card-body gap-md flex flex-col">
+                        <button class="btn btn-secondary">Secondary Button</button>
+                        <button class="btn btn-secondary btn-lg">Large Button</button>
+                        <button class="btn btn-secondary btn-sm">Small Button</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Outline Buttons</div>
+                    <div class="card-body gap-md flex flex-col">
+                        <button class="btn btn-outline">Outline Button</button>
+                        <button class="btn btn-outline btn-lg">Large Button</button>
+                        <button class="btn btn-outline btn-sm">Small Button</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-lg">
+                <div class="card">
+                    <div class="card-header">Button Code Example</div>
+                    <div class="card-body">
+                        <div class="code-block">
+&lt;button class="btn btn-primary"&gt;Primary Button&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Secondary Button&lt;/button&gt;
+&lt;button class="btn btn-outline btn-lg"&gt;Outline Large&lt;/button&gt;
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CARDS SECTION
+         ============================================ -->
+    <section id="cards" class="demo-section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Card <span class="section-header-accent">Components</span></h2>
+                <p>Reusable card layouts with consistent styling</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-header">Market Research</div>
+                    <div class="card-body">
+                        <p>Access comprehensive market data and insights with our gold-standard coverage and policy information.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-sm">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Software Solutions</div>
+                    <div class="card-body">
+                        <p>Industry-leading software designed to streamline patient access workflows and improve efficiency.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-sm">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Real-World Data</div>
+                    <div class="card-body">
+                        <p>Leverage critical real-world data and insights to make informed decisions for patient access.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-sm">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-lg">
+                <div class="card">
+                    <div class="card-header">Features & Benefits</div>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-content">
+                                <h4>Comprehensive Coverage</h4>
+                                <p>Gold-standard data coverage, policy information, and lives data</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-content">
+                                <h4>Industry-Leading Technology</h4>
+                                <p>Advanced software solutions designed for healthcare professionals</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-content">
+                                <h4>Real-World Insights</h4>
+                                <p>Critical data and insights to illuminate the path to patient access</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-content">
+                                <h4>Expert Support</h4>
+                                <p>Dedicated team ready to assist with implementation and optimization</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         BADGES SECTION
+         ============================================ -->
+    <section class="demo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Badges & <span class="section-header-accent">Tags</span></h2>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-header">Primary Badges</div>
+                    <div class="card-body gap-md flex flex-col">
+                        <span class="badge badge-primary">New Feature</span>
+                        <span class="badge badge-primary">Popular</span>
+                        <span class="badge badge-primary">Featured</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Secondary Badges</div>
+                    <div class="card-body gap-md flex flex-col">
+                        <span class="badge badge-secondary">Advanced</span>
+                        <span class="badge badge-secondary">Pro Plan</span>
+                        <span class="badge badge-secondary">Enterprise</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FORMS SECTION
+         ============================================ -->
+    <section id="forms" class="demo-section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Forms & <span class="section-header-accent">Inputs</span></h2>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-header">Contact Form</div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" placeholder="John Doe">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="john@example.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject">
+                                    <option>Select a subject</option>
+                                    <option>Product Inquiry</option>
+                                    <option>Technical Support</option>
+                                    <option>Partnership</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" rows="4" placeholder="Your message here..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Form Code Example</div>
+                    <div class="card-body">
+                        <div class="code-block">
+&lt;div class="form-group"&gt;
+  &lt;label for="name"&gt;Full Name&lt;/label&gt;
+  &lt;input type="text" id="name"&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input type="email" id="email"&gt;
+&lt;/div&gt;
+
+&lt;button class="btn btn-primary"&gt;
+  Send
+&lt;/button&gt;
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ALERTS SECTION
+         ============================================ -->
+    <section id="alerts" class="demo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Alerts & <span class="section-header-accent">Messages</span></h2>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="alert alert-success">
+                    <strong>Success!</strong> Your changes have been saved successfully.
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>Warning:</strong> Please review your information before proceeding.
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>Info:</strong> New features are now available in your account.
+                </div>
+
+                <div class="alert alert-error">
+                    <strong>Error:</strong> An error occurred while processing your request.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TABLES SECTION
+         ============================================ -->
+    <section id="tables" class="demo-section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Table <span class="section-header-accent">Layouts</span></h2>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Market Data Overview</div>
+                <div class="card-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Market Segment</th>
+                                <th>Active Panelists</th>
+                                <th>Data Points</th>
+                                <th>Coverage</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Payer Systems</td>
+                                <td>15,000+</td>
+                                <td>500M+</td>
+                                <td>95%</td>
+                                <td><span class="badge badge-primary">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>Provider Networks</td>
+                                <td>12,500+</td>
+                                <td>450M+</td>
+                                <td>92%</td>
+                                <td><span class="badge badge-primary">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>Pharmaceutical</td>
+                                <td>5,000+</td>
+                                <td>200M+</td>
+                                <td>88%</td>
+                                <td><span class="badge badge-primary">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>Health Tech</td>
+                                <td>3,000+</td>
+                                <td>150M+</td>
+                                <td>85%</td>
+                                <td><span class="badge badge-secondary">Monitoring</span></td>
+                            </tr>
+                            <tr>
+                                <td>Biotech Firms</td>
+                                <td>2,000+</td>
+                                <td>100M+</td>
+                                <td>80%</td>
+                                <td><span class="badge badge-primary">Active</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         DARK SECTION
+         ============================================ -->
+    <section class="demo-section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>Dark Section <span class="section-header-accent">Theme</span></h2>
+                <p class="text-muted">Professional dark background with yellow accents</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div>
+                    <h3>Feature One</h3>
+                    <p>Access comprehensive market data with gold-standard coverage and real-time insights.</p>
+                </div>
+                <div>
+                    <h3>Feature Two</h3>
+                    <p>Industry-leading software solutions designed for healthcare professionals and teams.</p>
+                </div>
+                <div>
+                    <h3>Feature Three</h3>
+                    <p>Real-world insights and data to illuminate the path to successful patient access.</p>
+                </div>
+            </div>
+
+            <div class="flex-center gap-lg mt-lg">
+                <button class="btn btn-primary">Get Started</button>
+                <button class="btn btn-secondary">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         GRID LAYOUTS
+         ============================================ -->
+    <section class="demo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Grid <span class="section-header-accent">Layouts</span></h2>
+            </div>
+
+            <div class="grid grid-2 mb-lg">
+                <div class="card text-center">
+                    <div class="card-header">2-Column Grid</div>
+                    <p>Responsive layout that adapts to different screen sizes</p>
+                </div>
+                <div class="card text-center">
+                    <div class="card-header">Auto-Fit</div>
+                    <p>Automatically adjusts based on available space</p>
+                </div>
+            </div>
+
+            <div class="grid grid-3 mb-lg">
+                <div class="card text-center">
+                    <div class="card-header">3-Column</div>
+                    <p>Perfect for displaying multiple items</p>
+                </div>
+                <div class="card text-center">
+                    <div class="card-header">Responsive</div>
+                    <p>Stacks on mobile devices</p>
+                </div>
+                <div class="card text-center">
+                    <div class="card-header">Modern</div>
+                    <p>CSS Grid technology</p>
+                </div>
+            </div>
+
+            <div class="grid grid-4">
+                <div class="card text-center">
+                    <div class="card-header">1</div>
+                    <p>4-column layout</p>
+                </div>
+                <div class="card text-center">
+                    <div class="card-header">2</div>
+                    <p>Perfect for portfolios</p>
+                </div>
+                <div class="card text-center">
+                    <div class="card-header">3</div>
+                    <p>Showcase items</p>
+                </div>
+                <div class="card text-center">
+                    <div class="card-header">4</div>
+                    <p>Clean display</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SPACING UTILITIES
+         ============================================ -->
+    <section class="demo-section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Spacing <span class="section-header-accent">Utilities</span></h2>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-header">Margin Classes</div>
+                    <div class="card-body">
+                        <p class="m-0 p-md" style="background: #fff3e0;">m-0 (no margin)</p>
+                        <p class="m-xs p-md" style="background: #fff3e0;">m-xs (0.25rem)</p>
+                        <p class="m-sm p-md" style="background: #fff3e0;">m-sm (0.5rem)</p>
+                        <p class="m-md p-md" style="background: #fff3e0;">m-md (1rem)</p>
+                        <p class="m-lg p-md" style="background: #fff3e0;">m-lg (1.5rem)</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Padding Classes</div>
+                    <div class="card-body">
+                        <p class="p-0" style="background: #e3f2fd;">p-0 (no padding)</p>
+                        <p class="p-xs" style="background: #e3f2fd;">p-xs (0.25rem)</p>
+                        <p class="p-sm" style="background: #e3f2fd;">p-sm (0.5rem)</p>
+                        <p class="p-md" style="background: #e3f2fd;">p-md (1rem)</p>
+                        <p class="p-lg" style="background: #e3f2fd;">p-lg (1.5rem)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Solutions</h3>
+                    <a href="#">Market Research</a>
+                    <a href="#">Software Platform</a>
+                    <a href="#">Real-World Data</a>
+                    <a href="#">Analytics</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Press</a>
+                    <a href="#">Blog</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <a href="#">Documentation</a>
+                    <a href="#">API Reference</a>
+                    <a href="#">Support</a>
+                    <a href="#">Contact Us</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Disclaimer</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Managed Markets Insight & Technology, LLC. All rights reserved. | Illuminating the path to patient access.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
